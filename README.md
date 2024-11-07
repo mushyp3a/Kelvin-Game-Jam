@@ -1,4 +1,4 @@
-# please do not comprehend this code.
+please do not comprehend this code.
 
 ## json structure :3
 
