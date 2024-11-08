@@ -7,7 +7,9 @@ ingredients = [ "Hydroponic Root", "Ferrite Dust", "Stellar Herb", "Cryocrystal"
                "Carbon Fibrils", "Fungi Extract", "E̸̜̋s̸̨̙̆̀͝ṩ̷̲͂̏ͅẽ̸̜̬̣̕n̶̩̕c̷̼̱̅è̷͕͎̚", "Root Concentrate", "Root Essence", "Finely Ground Root", "Ferrite Weave", "Ferrite Plate", "Stellar Paste", "Herb Essence", "Finely Ground Stellar Herb",
                "Cryocrystalline Shards", "Nebula Moss Concentrate", "Nebula Resin", "Nebula Essence", "Carbon Sheet", "Carbon Powder", "Fungi Essence"]
 
-alchemy_dict = {"Ingredients":{},"Recipes":{}}
+starters = ["Hydroponic Root", 'Ferrite Dust', 'Stellar Herb', 'Cryocrystal', 'Nebula Moss', 'Carbon Flakes', 'Fungi', 'S̵̡͇̽̾͜͝p̷̪̪̻͂o̸̢̼̞͌̃r̶̳̘͖͝ë̸̤̱́̄̍s̶͍̗̓']
+
+alchemy_dict = {"Starting":{}, "Ingredients":{},"Recipes":{}}
 
 for ingredient in ingredients:
     alchemy_dict["Ingredients"][ingredient] = {
@@ -15,6 +17,9 @@ for ingredient in ingredients:
         "Extractor": None,
         "Grinder": None,
     }
+for ing in starters:
+    alchemy_dict["Starting"][ing] = 0
+    
 
 alchemy_dict["Ingredients"]["Hydroponic Root"]["Extractor"] = "Root Extract"
 alchemy_dict["Ingredients"]["Hydroponic Root"]["Grinder"] = "Ground Root"
@@ -23,7 +28,7 @@ alchemy_dict["Ingredients"]["Ferrite Dust"]["Heater"] = "Ferrite Nuggets"
 alchemy_dict["Ingredients"]["Stellar Herb"]["Extractor"] = "Stellar Herb Extract"
 alchemy_dict["Ingredients"]["Stellar Herb"]["Grinder"] = "Ground Stellar Herb"
 alchemy_dict["Ingredients"]["Cryocrystal"]["Grinder"] = "Cryocrystal Powder"
-alchemy_dict["Ingredients"]["Cryopaste"]["Heater"] = "Cryopaste"
+alchemy_dict["Ingredients"]["Cryocrystal"]["Heater"] = "Cryopaste"
 alchemy_dict["Ingredients"]["Nebula Moss"]["Heater"] = "Activated Moss"
 alchemy_dict["Ingredients"]["Nebula Moss"]["Extractor"] = "Nebula Extract"
 alchemy_dict["Ingredients"]["Carbon Flakes"]["Heater"] = "Carbon Fibrils"
@@ -57,17 +62,6 @@ alchemy_dict["Ingredients"]["Carbon Fibrils"]["Grinder"] = "Carbon Powder"
 
 alchemy_dict["Ingredients"]["Fungi Extract"]["Extractor"] = "Fungi Essence"
 
-def get_origin(alchemy_dict, target_product): 
-    verbs = {"Extractor":'Extract', 'Grinder': 'Grind', 'Heater': 'Heat'}
-
-    for ingredient, machines in alchemy_dict.items(): 
-        for machine, product in machines.items(): 
-            if product == target_product: 
-                return f"{verbs[machine]} {product.lower()} from the {ingredient.lower()}."
-    return None
-
-print(get_origin(alchemy_dict, "Fungi Essence"))
-
 alchemy_dict["Recipes"] = {
     "Anti-Radiation Shield": ["Ferrite Dust", "Nebula Extract"],
     "Life Support Supplement": ["Cryocrystal", "Activated Moss"],
@@ -89,7 +83,7 @@ alchemy_dict["Recipes"] = {
     "Engine Coolant": ["Cryocrystal Powder", "Ground Root"],
     "Air Purifier": ["Nebula Moss", "Ferrite Plate"],
     "Growth Enhancer": ["Stellar Herb", "Cryopaste"],
-    "Alien Remedy": ["S̵̡͇̽̾͜͝p̷̪̪̻͂o̸̢̼̞͌̃r̶̳̘͖͝ë̸̤̱́̍s̶͍̗̓", "Ferrite Weave"],
+    "Alien Remedy": ["E̸̜̋s̸̨̙̆̀͝ṩ̷̲͂̏ͅẽ̸̜̬̣̕n̶̩̕c̷̼̱̅è̷͕͎̚", "Ferrite Weave"],
     "Bio-Revitalizer": ["Fungi", "Root Extract"],
     "Shield Coating": ["Ferrite Plate", "Cryocrystal Powder"],
     "Visual Aid": ["Cryocrystal", "Stellar Herb Extract"],
@@ -104,7 +98,7 @@ alchemy_dict["Recipes"] = {
     "Coolant Paste": ["Cryocrystal Powder", "Carbon Fibrils"],
     "Atmospheric Reagent": ["Nebula Moss", "Cryocrystal Powder"],
     "Plant Fertilizer": ["Stellar Herb", "Cryocrystalline Shards"],
-    "Alien Cure": ["S̵̡͇̽̾͜͝p̷̪̪̻͂o̸̢̼̞͌̃r̶̳̘͖͝ë̸̤̱́̍s̶͍̗̓", "Stellar Herb Extract"],
+    "Alien Cure": ["E̸̜̋s̸̨̙̆̀͝ṩ̷̲͂̏ͅẽ̸̜̬̣̕n̶̩̕c̷̼̱̅è̷͕͎̚", "Stellar Herb Extract"],
     "Bio-Elixir": ["Fungi", "Activated Moss"],
     "Shield Enhancer": ["Ferrite Plate", "Ground Root"],
     "Optical Solution": ["Cryocrystal", "Nebula Essence"],
@@ -134,7 +128,7 @@ alchemy_dict["Recipes"] = {
     "Coolant Gel": ["Cryocrystal Powder", "Ferrite Plate"],
     "Atmosphere Enricher": ["Nebula Moss", "Cryocrystalline Shards"],
     "Plant Booster": ["Stellar Herb", "Activated Moss"],
-    "Alien Treatment": ["S̵̡͇̽̾͜͝p̷̪̪̻͂o̸̢̼̞͌̃r̶̳̘͖͝ë̸̤̱́̍s̶͍̗̓", "Cryocrystal Powder"],
+    "Alien Treatment": ["E̸̜̋s̸̨̙̆̀͝ṩ̷̲͂̏ͅẽ̸̜̬̣̕n̶̩̕c̷̼̱̅è̷͕͎̚", "Cryocrystal Powder"],
     "Bio-Tonic": ["Fungi", "Ferrite Dust"],
     "Shield Fortifier": ["Ferrite Plate", "Root Essence"],
     "Optical Booster": ["Cryocrystal", "Ferrite Nuggets"],
@@ -149,7 +143,7 @@ alchemy_dict["Recipes"] = {
     "Engine Shield": ["Cryocrystal Powder", "Fungi Essence"],
     "Atmosphere Cleaner": ["Nebula Moss", "Ferrite Nuggets"],
     "Plant Growth Serum": ["Stellar Herb", "Carbon Powder"],
-    "Alien Elixir": ["S̵̡͇̽̾͜͝p̷̪̪̻͂o̸̢̼̞͌̃r̶̳̘͖͝ë̸̤̱́̍s̶͍̗̓", "Root Concentrate"],
+    "Alien Elixir": ["E̸̜̋s̸̨̙̆̀͝ṩ̷̲͂̏ͅẽ̸̜̬̣̕n̶̩̕c̷̼̱̅è̷͕͎̚", "Root Concentrate"],
     "Bio-Serum": ["Fungi", "Cryocrystalline Shards"],
     "Shield Layer": ["Ferrite Plate", "Ground Root"],
     "Optical Enhancing Fluid": ["Cryocrystal", "Carbon Fibrils"],
@@ -166,7 +160,13 @@ alchemy_dict["Recipes"] = {
     "Plant Enhancer": ["Stellar Herb", "Cryocrystal Powder"]
 }
 
+def get_origin(alchemy_dict, target_product): 
+    verbs = {"Extractor":'Extract', 'Grinder': 'Grind', 'Heater': 'Heat'}
+
+    if target_product in alchemy_dict["Ingredients"]:
+        print(target_product)
+
+get_origin(alchemy_dict, "Carbon Powder")
+
 with open("alchemy.json", "w") as json_file:
     json.dump(alchemy_dict, json_file, indent=4)
-
-print("Alchemy ingredients dictionary has been written to 'expanded_alchemy_ingredients.json'.")
